@@ -39,7 +39,7 @@ public class CertificateController {
     }
 
 
-    @GetMapping("/certificate/{certID}")
+    @GetMapping("/patient/{patientID}/certificate")
     public @ResponseBody
     Certificate getOne(
             @PathVariable String certID)
@@ -53,7 +53,7 @@ public class CertificateController {
         return certificate;
     }
 
-    @PatchMapping("/certificate/{certID}")
+    @PatchMapping("/patient/{patientID}/certificate")
     public @ResponseBody
     Certificate updateExisting(@PathVariable String certID, @RequestBody Certificate changes) {
 
