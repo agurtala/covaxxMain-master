@@ -1,5 +1,5 @@
 package ASS.covaxx.controller;
-import ASS.covaxx.model.Vaccine;
+import ASS.covaxx.model.Patient;
 import ASS.covaxx.model.Certificate;
 import ASS.covaxx.repo.VaccineRepo;
 import ASS.covaxx.repo.PatientRepo;
@@ -19,19 +19,20 @@ public class CertificateController {
     private CertificateRepo Certificate;
 
     @Autowired
-    private VaccineRepo Patient;
+    private VaccineRepo Vaccine;
 
     @Autowired
-    private PatientRepo Vaccine;
+    private PatientRepo Patient;
 
     @GetMapping("/patient/{patientID}/certificate")
     private @ResponseBody
-    Collection<Certificate> getSessions(
+    Collection<Certificate> getcertificate(
             @PathVariable String patientID
-    ) {
-        Vaccine vaccine = this.Patient.getById(patientID);
 
-        if (vaccine == null)
+    ) {
+        Patient patient = this.Patient.getById(patientID);
+
+        if (patient== null)
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There is no patient with this patientID");
 
         return Certificate.find(patientID, null);
