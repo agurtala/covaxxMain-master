@@ -26,20 +26,20 @@ public class CertificateController {
 
     @GetMapping("/patient/{patientID}/certificate")
     private @ResponseBody
-    Collection<Certificate> getcertificate(
+    Collection<Certificate> getCertificate(
             @PathVariable String patientID
 
     ) {
         Patient patient = this.Patient.getById(patientID);
 
-        if (patient== null)
+        if (patient == null)
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There is no patient with this patientID");
 
         return Certificate.find(patientID, null);
     }
 
 
-    @GetMapping("/patient/{patientID}/certificate")
+    @GetMapping("/certificate/{certID}")
     public @ResponseBody
     Certificate getOne(
             @PathVariable String certID)
@@ -53,7 +53,7 @@ public class CertificateController {
         return certificate;
     }
 
-    @PatchMapping("/patient/{patientID}/certificate")
+    @PatchMapping("/certificate/{certID}")
     public @ResponseBody
     Certificate updateExisting(@PathVariable String certID, @RequestBody Certificate changes) {
 
@@ -90,7 +90,7 @@ public class CertificateController {
 
     @PostMapping("/patient/{patientID}/certificate")
     private @ResponseBody
-    Certificate createSession(
+    Certificate createCertificate(
             @PathVariable String patientID,
             @RequestBody Certificate certificate
 
