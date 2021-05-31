@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Collection;
 
 @Controller
+@CrossOrigin
 public class PatientController {
 
     @Autowired
@@ -63,12 +64,8 @@ public class PatientController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "This patientID does not exist");
         }
 
-        if (changes.patientFname != null) {
-            existingPatient.patientFname = changes.patientFname;
-        }
-
-        if (changes.patientLname != null) {
-            existingPatient.patientLname = changes.patientLname;
+        if (changes.patientName != null) {
+            existingPatient.patientName  = changes.patientName ;
         }
 
         this.PatientRepo.save(existingPatient);

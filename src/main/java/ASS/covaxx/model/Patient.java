@@ -10,8 +10,8 @@ public class Patient {
     @Id
     public String patientID;
 
-    public String patientFname;
-    public String patientLname;
+    public String patientName;
+
 
 
 }

@@ -23,7 +23,7 @@ public class CertificateRepo {
         Query query = new Query() ;
 
         if (patientID != null)
-            query.addCriteria(Criteria.where("practiceID").is(patientID));
+            query.addCriteria(Criteria.where("patientID").is(patientID));
 
 
         if (vacID != null)

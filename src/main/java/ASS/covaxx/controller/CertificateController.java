@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Collection;
 
 @Controller
+@CrossOrigin
 public class CertificateController {
 
     @Autowired
@@ -121,11 +122,11 @@ public class CertificateController {
 
         }
         if (certificate.vacID == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No practitioner ID specified");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No patient ID specified");
 
         }
         if (Vaccine.getById(certificate.vacID) == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no practitioner with this ID");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no patient with this ID");
 
 
         }
